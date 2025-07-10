@@ -13,7 +13,7 @@ canvas {
     border: 2px solid #000;
 }
 
-#startScreen, #endScreen {
+#startScreen {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -23,7 +23,7 @@ canvas {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#startButton, #restartButton {
+#startButton {
     padding: 15px 30px;
     font-size: 20px;
     color: #fff;
@@ -33,6 +33,6 @@ canvas {
     cursor: pointer;
 }
 
-#startButton:hover, #restartButton:hover {
+#startButton:hover {
     background-color: #218838;
 }
