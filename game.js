@@ -80,6 +80,7 @@ function updateGame() {
         ctx.fillStyle = "#FF0000";
         ctx.fillText("Game Over", 90, canvas.height / 2);
         ctx.fillText("Score: " + score, 110, canvas.height / 2 + 40);
+        document.getElementById("endScreen").style.display = "flex";  // Show restart button
         return;
     }
 
@@ -117,4 +118,18 @@ document.getElementById("startButton").addEventListener("click", function() {
     document.getElementById("startScreen").style.display = "none";  // Hide the start screen
     setInterval(createPipe, 1500);  // Creates new pipes every 1.5 seconds
     updateGame();
+});
+
+// Restart game when the restart button is clicked
+document.getElementById("restartButton").addEventListener("click", function() {
+    // Reset game state
+    birdY = canvas.height / 2;
+    birdVelocity = 0;
+    pipes = [];
+    score = 0;
+    gameOver = false;
+    gameStarted = false;
+
+    document.getElementById("endScreen").style.display = "none";  // Hide restart screen
+    document.getElementById("startScreen").style.display = "flex";  // Show start screen
 });
