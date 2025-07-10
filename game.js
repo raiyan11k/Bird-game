@@ -9,14 +9,14 @@ let birdY = canvas.height / 2;
 let birdVelocity = 0;
 const birdWidth = 20;
 const birdHeight = 20;
-const gravity = 0.4;  // Moderate gravity for natural fall
-const lift = -6;  // Lower lift for more controlled rise
+const gravity = 0.2;  // Slower fall (easier gameplay)
+const lift = -5;  // Lower flap (more controlled rise)
 const birdColor = "#FFFF00";  // Yellow
 
 let pipes = [];
 const pipeWidth = 40;
-const pipeGap = 120;  // Bigger gap between pipes
-let pipeSpeed = 1.5;  // Slower pipes
+const pipeGap = 250;  // Wider gap between pipes
+let pipeSpeed = 2.0;  // Increased pipe speed (faster pipes)
 
 let score = 0;
 let gameOver = false;
@@ -31,6 +31,7 @@ function createPipe() {
     const gap = Math.floor(Math.random() * (canvas.height - pipeGap));
     const topPipeHeight = gap;
     const bottomPipeHeight = canvas.height - (gap + pipeGap);
+    
     pipes.push({
         x: canvas.width,
         topHeight: topPipeHeight,
@@ -48,7 +49,7 @@ function drawPipes() {
 
 function movePipes() {
     pipes.forEach(pipe => {
-        pipe.x -= pipeSpeed;
+        pipe.x -= pipeSpeed;  // Increase pipe speed
     });
 
     // Remove pipes that are off-screen
@@ -104,7 +105,7 @@ function updateGame() {
 
 function flap() {
     if (!gameOver) {
-        birdVelocity = lift;  // Lower lift for more controlled rise
+        birdVelocity = lift;  // Lower flap for more controlled rise
     }
 }
 
@@ -115,6 +116,6 @@ document.addEventListener("click", flap);
 document.getElementById("startButton").addEventListener("click", function() {
     gameStarted = true;
     document.getElementById("startScreen").style.display = "none";  // Hide the start screen
-    setInterval(createPipe, 1500);  // Creates new pipes every 1.5 seconds
+    setInterval(createPipe, 1500);  // Creates new pipes every 1.5 seconds (faster creation)
     updateGame();
 });
